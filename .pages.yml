@@ -1,0 +1,98 @@
+# Panel de edición (Pages CMS). El equipo cambia contenido por campos; el diseño no se toca desde aquí.
+media:
+  input: media
+  output: /media
+  extensions: [jpg, jpeg, png, webp]
+
+content:
+  - name: productos
+    label: Productos (catálogo)
+    type: collection
+    path: content/productos
+    format: json
+    filename: "{primary}.json"
+    view:
+      primary: nombre
+      fields: [nombre, categoria, publicado]
+      sort: [orden, nombre]
+      default: { sort: orden, order: asc }
+    fields:
+      - { name: nombre, label: Nombre del producto, type: string, required: true }
+      - name: categoria
+        label: Categoría
+        type: select
+        required: true
+        options:
+          values: [Receptores GNSS, Estaciones totales, Drones de ala fija, Drones multirrotor, LiDAR, Sistemas marinos, Sistemas móviles, Software, Controladores y tabletas, Control de maquinaria, Sistema agrícola]
+      - { name: imagen, label: Foto del producto, type: image, required: true, description: "Puede subirla del tamaño que sea: la página la achica sola." }
+      - { name: resumen, label: "Resumen (una o dos líneas)", type: text, required: true, options: { maxlength: 200 } }
+      - { name: descripcion, label: Descripción completa, type: rich-text }
+      - name: especificaciones
+        label: Especificaciones técnicas
+        type: object
+        list: true
+        fields:
+          - { name: dato, label: Dato, type: string }
+          - { name: valor, label: Valor, type: string }
+      - { name: destacado, label: "¿Sale en la portada?", type: boolean, default: false }
+      - { name: orden, label: Orden en el catálogo, type: number, default: 50 }
+      - { name: publicado, label: Publicado, type: boolean, default: true, description: "Si lo apaga, el producto deja de verse en la página sin borrarse." }
+      - { name: url_anterior, label: Dirección en la página vieja, type: string, readonly: true, description: "Lo maneja Sigma. Sirve para no perder lo que Google ya conoce." }
+
+  - name: proyectos
+    label: Proyectos realizados
+    type: collection
+    path: content/proyectos
+    format: json
+    filename: "{primary}.json"
+    view:
+      primary: titulo
+      fields: [titulo, sector, fecha]
+    fields:
+      - { name: titulo, label: Título del proyecto, type: string, required: true }
+      - name: sector
+        label: Sector
+        type: select
+        options: { values: [Construcción, Minería, Marino, Agricultura, Gobierno, Energía] }
+      - { name: imagen, label: Foto, type: image, required: true }
+      - { name: resumen, label: Qué se hizo, type: text, options: { maxlength: 300 } }
+      - { name: fecha, label: Fecha, type: date }
+      - { name: publicado, label: Publicado, type: boolean, default: true }
+
+  - name: inicio
+    label: Portada
+    type: file
+    path: content/inicio.json
+    format: json
+    fields:
+      - { name: titular, label: Titular grande, type: string, required: true, options: { maxlength: 80 } }
+      - { name: subtitulo, label: Frase debajo del titular, type: text, options: { maxlength: 180 } }
+      - { name: foto_principal, label: Foto principal, type: image, required: true }
+      - name: areas
+        label: Las cuatro áreas
+        type: object
+        list: { min: 4, max: 4 }
+        fields:
+          - { name: titulo, label: Título, type: string }
+          - { name: texto, label: Texto corto, type: text, options: { maxlength: 120 } }
+          - { name: categoria, label: Categoría del catálogo a la que lleva, type: string }
+
+  - name: sitio
+    label: Datos de la empresa
+    type: file
+    path: content/sitio.json
+    format: json
+    fields:
+      - { name: empresa, label: Nombre, type: string, readonly: true }
+      - { name: eslogan, label: Eslogan, type: string }
+      - { name: anios, label: Años de operación, type: number }
+      - { name: whatsapp, label: "WhatsApp de ventas (solo números, con 507)", type: string, pattern: { regex: "^507[0-9]{7,8}$", message: "Solo números, empezando con 507." } }
+      - { name: telefono, label: Teléfono visible, type: string }
+      - { name: correo, label: Correo visible, type: string }
+      - name: sedes
+        label: Sedes
+        type: object
+        list: true
+        fields:
+          - { name: ciudad, label: Ciudad, type: string }
+          - { name: direccion, label: Dirección, type: string }

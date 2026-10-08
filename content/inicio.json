@@ -1,0 +1,11 @@
+{
+  "titular": "Tecnología geoespacial para medir, mapear y construir.",
+  "subtitulo": "Equipos, servicios y soporte técnico para topografía, cartografía 3D, levantamientos marinos y drones.",
+  "foto_principal": "/media/cantera-aerea.jpg",
+  "areas": [
+    { "titulo": "Topografía e ingeniería", "texto": "Estaciones totales y receptores GNSS para obra y catastro.", "categoria": "Receptores GNSS" },
+    { "titulo": "Cartografía móvil 3D", "texto": "Escáneres láser y sistemas móviles para modelar el terreno.", "categoria": "LiDAR" },
+    { "titulo": "Levantamientos marinos", "texto": "Embarcaciones no tripuladas para batimetría.", "categoria": "Sistemas marinos" },
+    { "titulo": "Drones y fotogrametría", "texto": "Ala fija y multirrotor para levantar grandes áreas.", "categoria": "Drones de ala fija" }
+  ]
+}

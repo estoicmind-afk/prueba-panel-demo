@@ -1,0 +1,12 @@
+{
+  "empresa": "Geomedida (demo)",
+  "eslogan": "Tecnología geoespacial para medir, mapear y construir.",
+  "anios": 32,
+  "whatsapp": "50760000000",
+  "telefono": "+507 6000-0000",
+  "correo": "ventas@ejemplo.com",
+  "sedes": [
+    { "ciudad": "Ciudad de Panamá", "direccion": "Calle de ejemplo, edificio demo" },
+    { "ciudad": "David, Chiriquí", "direccion": "Avenida de ejemplo" }
+  ]
+}

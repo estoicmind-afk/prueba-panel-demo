@@ -1,0 +1,1 @@
+{ "name": "prueba-panel", "private": true, "scripts": { "build": "node build.js" }, "dependencies": { "sharp": "^0.34.0" } }
